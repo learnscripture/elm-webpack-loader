@@ -50,10 +50,10 @@ var isFlagSet = function(args, flag) {
     return typeof args[flag] !== "undefined" && args[flag];
 };
 
-/* Takes a working dir, tries to read elm.json, then grabs all the modules from in there
+/* Takes a working dir, tries to read elm-package.json, then grabs all the modules from in there
 */
 var filesToWatch = function(cwd){
-    var readFile = fs.readFileSync(path.join(cwd, "elm.json"), "utf8");
+    var readFile = fs.readFileSync(path.join(cwd, "elm-package.json"), "utf8");
     var elmPackage = JSON.parse(readFile);
 
     var paths = elmPackage["source-directories"].map(function(dir){
@@ -102,11 +102,11 @@ module.exports = function() {
     if (compiler.watching) {
         // we can do a glob to track deps we care about if cwd is set
         if (typeof options.cwd !== "undefined" && options.cwd !== null){
-            // watch elm.json
-            var elmPackage = path.join(options.cwd, "elm.json");
+            // watch elm-package.json
+            var elmPackage = path.join(options.cwd, "elm-package.json");
             addDependencies(elmPackage);
             var dirs = filesToWatch(options.cwd);
-            // watch all the dirs in elm.json
+            // watch all the dirs in elm-package.json
             addDirDependency.bind(this)(dirs);
         }
 

@@ -1,5 +1,11 @@
 # Elm loader [![Version](https://img.shields.io/npm/v/elm-webpack-loader.svg)](https://www.npmjs.com/package/elm-webpack-loader) [![Travis build Status](https://travis-ci.org/elm-community/elm-webpack-loader.svg?branch=master)](http://travis-ci.org/elm-community/elm-webpack-loader) 
 
+
+**Note** This is a fork of elm-webpack-loader that supports Elm 0.18, and modern
+nodejs/webpack versions. It may be missing features from elm-webpack-loader, it
+only has enough to ensure we can continue to build old Elm projects.
+
+
 [Webpack](https://webpack.js.org/) loader for the [Elm](http://elm-lang.org/) programming language.
 
 It is aware of Elm dependencies and tracks them. This means that in watch
@@ -54,9 +60,9 @@ var elmSource = __dirname + '/elm/path/in/project'
   ...
 ```
 
-`cwd` should be set to the same directory as your `elm.json` file. You can use this to specify a custom location within your project for your elm files. Note, this
+`cwd` should be set to the same directory as your `elm-package.json` file. You can use this to specify a custom location within your project for your elm files. Note, this
 will cause the compiler to look for **all** elm source files in the specified directory. This
-approach is recommended as it allows the compile to watch elm.json as well as every file
+approach is recommended as it allows the compile to watch elm-package.json as well as every file
 in the source directories.
 
 #### Optimize (default is true in production mode)
